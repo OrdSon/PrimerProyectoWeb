@@ -17,7 +17,7 @@ public class Pixel extends javax.swing.JPanel implements Serializable {
 
     int indice;
     static Color color = Color.black;
-    boolean click;
+    static boolean click;
 
     public Pixel() {
         initComponents();
@@ -34,11 +34,11 @@ public class Pixel extends javax.swing.JPanel implements Serializable {
     }
 
     private void cambiaColor() {
-        click = true;
         if (color == null) {
             return;
         }
         setBackground(color);
+        this.updateUI();
     }
 
     //toma la casilla que se le asigna y la muestra en pantalla
@@ -81,7 +81,9 @@ public class Pixel extends javax.swing.JPanel implements Serializable {
     }//GEN-LAST:event_formMouseClicked
 
     private void formMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseEntered
-
+        if (click) {
+            cambiaColor();
+        }
     }//GEN-LAST:event_formMouseEntered
 
     private void formMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseExited
@@ -89,7 +91,7 @@ public class Pixel extends javax.swing.JPanel implements Serializable {
     }//GEN-LAST:event_formMouseExited
 
     private void formMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseReleased
-
+        click = false;
     }//GEN-LAST:event_formMouseReleased
 
     private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
@@ -97,7 +99,8 @@ public class Pixel extends javax.swing.JPanel implements Serializable {
     }//GEN-LAST:event_formMouseDragged
 
     private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
-
+        cambiaColor();
+        click = true;
     }//GEN-LAST:event_formMousePressed
 
 

@@ -25,6 +25,8 @@ public class Start {
     public void Start(int numero) {
         Interfaz interfaz = new Interfaz();
         Sprite sprite = new Sprite();
+        interfaz.setSprite(sprite);
+        sprite.setInterfaz(interfaz);
         sprite.crearSprite(numero, numero);
         interfaz.crearLienzo(sprite);
         interfaz.setVisible(true);

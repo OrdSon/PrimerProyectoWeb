@@ -70,13 +70,13 @@ public class Inicio extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         slider.setBackground(new java.awt.Color(255, 255, 255));
-        slider.setMaximum(10);
+        slider.setMaximum(32);
         slider.setMinimum(2);
         slider.setMinorTickSpacing(1);
         slider.setPaintTicks(true);
         slider.setSnapToTicks(true);
         slider.setToolTipText("");
-        slider.setValue(6);
+        slider.setValue(17);
         slider.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 sliderStateChanged(evt);
@@ -84,7 +84,7 @@ public class Inicio extends javax.swing.JFrame {
         });
 
         lblSize.setFont(new java.awt.Font("EB Garamond 12 All SC", 1, 48)); // NOI18N
-        lblSize.setText("6X6");
+        lblSize.setText("17X17");
 
         btnCrear.setBackground(new java.awt.Color(153, 255, 153));
         btnCrear.setFont(new java.awt.Font("EB Garamond 12 All SC", 1, 36)); // NOI18N

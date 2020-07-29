@@ -126,13 +126,13 @@
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="maximum" type="int" value="10"/>
+            <Property name="maximum" type="int" value="32"/>
             <Property name="minimum" type="int" value="2"/>
             <Property name="minorTickSpacing" type="int" value="1"/>
             <Property name="paintTicks" type="boolean" value="true"/>
             <Property name="snapToTicks" type="boolean" value="true"/>
             <Property name="toolTipText" type="java.lang.String" value=""/>
-            <Property name="value" type="int" value="6"/>
+            <Property name="value" type="int" value="17"/>
           </Properties>
           <Events>
             <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="sliderStateChanged"/>
@@ -143,7 +143,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="EB Garamond 12 All SC" size="48" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="6X6"/>
+            <Property name="text" type="java.lang.String" value="17X17"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="btnCrear">

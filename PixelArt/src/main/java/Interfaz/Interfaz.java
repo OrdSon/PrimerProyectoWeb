@@ -5,18 +5,27 @@
  */
 package Interfaz;
 
+import ListasYPilas.ExcepcionListaEnlazada;
+import ListasYPilas.ListaEnlazada;
 import Pixel.Pixel;
 import Sprite.Sprite;
 import java.awt.Color;
 import java.awt.color.ColorSpace;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.BorderFactory;
 import javax.swing.JColorChooser;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author samuelson
  */
 public class Interfaz extends javax.swing.JFrame {
+    boolean bordes;
     Color color = (Color.black);
+    ListaEnlazada<Pixel> pixeles;
+    Sprite sprite;
     /**
      * Creates new form Interfaz
      */
@@ -25,11 +34,50 @@ public class Interfaz extends javax.swing.JFrame {
         setBounds(100, 100, 730, 600);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
-    
+    private void verBordes(){
+        if (pixeles == null) {
+            JOptionPane.showMessageDialog(null, "LA LISTA DE PIXELES ESTA VACIA");
+            return;
+        }
+        if (bordes == true) {
+            for (int i = 0; i < pixeles.getSize(); i++) {
+                try {
+                    pixeles.get(i).setBorder(BorderFactory.createLineBorder(new Color(235, 222, 222)));
+                } catch (ExcepcionListaEnlazada ex) {
+                    Logger.getLogger(Interfaz.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }else if (bordes == false){
+            for (int i = 0; i < pixeles.getSize(); i++) {
+                 try {
+                    pixeles.get(i).setBorder(null);
+                } catch (ExcepcionListaEnlazada ex) {
+                    Logger.getLogger(Interfaz.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        sprite.updateUI();
+    }
     public void crearLienzo(Sprite sprite){
         hoja.add(sprite);
     }
 
+    public Sprite getSprite() {
+        return sprite;
+    }
+
+    public void setSprite(Sprite sprite) {
+        this.sprite = sprite;
+    }
+
+    public ListaEnlazada<Pixel> getPixeles() {
+        return pixeles;
+    }
+
+    public void setPixeles(ListaEnlazada<Pixel> pixeles) {
+        this.pixeles = pixeles;
+    }
+    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -39,11 +87,11 @@ public class Interfaz extends javax.swing.JFrame {
         barraLateral = new javax.swing.JPanel();
         panelColor = new javax.swing.JPanel();
         colorElegido = new javax.swing.JPanel();
+        btnVerBordes = new javax.swing.JButton();
         hoja = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(730, 600));
-        setPreferredSize(new java.awt.Dimension(730, 600));
 
         base.setMinimumSize(new java.awt.Dimension(730, 600));
         base.setPreferredSize(new java.awt.Dimension(730, 600));
@@ -60,7 +108,7 @@ public class Interfaz extends javax.swing.JFrame {
                 panelColorMouseClicked(evt);
             }
         });
-        panelColor.setLayout(new java.awt.GridLayout());
+        panelColor.setLayout(new java.awt.GridLayout(1, 0));
 
         colorElegido.setBackground(new java.awt.Color(0, 0, 0));
 
@@ -77,18 +125,31 @@ public class Interfaz extends javax.swing.JFrame {
 
         panelColor.add(colorElegido);
 
+        btnVerBordes.setText("BORDES");
+        btnVerBordes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVerBordesActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout barraLateralLayout = new javax.swing.GroupLayout(barraLateral);
         barraLateral.setLayout(barraLateralLayout);
         barraLateralLayout.setHorizontalGroup(
             barraLateralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(panelColor, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(barraLateralLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnVerBordes)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         barraLateralLayout.setVerticalGroup(
             barraLateralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(barraLateralLayout.createSequentialGroup()
                 .addGap(177, 177, 177)
                 .addComponent(panelColor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(279, Short.MAX_VALUE))
+                .addGap(30, 30, 30)
+                .addComponent(btnVerBordes)
+                .addContainerGap(224, Short.MAX_VALUE))
         );
 
         base.add(barraLateral, java.awt.BorderLayout.LINE_START);
@@ -111,6 +172,11 @@ public class Interfaz extends javax.swing.JFrame {
         colorElegido.setBackground(color);
         Pixel.setColor(color);
     }//GEN-LAST:event_panelColorMouseClicked
+
+    private void btnVerBordesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerBordesActionPerformed
+        verBordes();
+        bordes = !bordes;
+    }//GEN-LAST:event_btnVerBordesActionPerformed
     
     /**
      * @param args the command line arguments
@@ -150,6 +216,7 @@ public class Interfaz extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel barraLateral;
     private javax.swing.JPanel base;
+    private javax.swing.JButton btnVerBordes;
     private javax.swing.JPanel colorElegido;
     private javax.swing.JPanel hoja;
     private javax.swing.JPanel panelColor;

@@ -5,6 +5,8 @@
  */
 package Sprite;
 
+import Interfaz.Interfaz;
+import ListasYPilas.ListaEnlazada;
 import Pixel.Pixel;
 import java.awt.GridLayout;
 
@@ -16,17 +18,32 @@ public class Sprite extends javax.swing.JPanel {
     /**
      * Creates new form Sprite
      */
+    Interfaz interfaz;
     public Sprite() {
         initComponents();
     }
     public void crearSprite(int filas, int columnas){
         setLayout(new GridLayout(filas,columnas));
         int total = (filas*columnas);
+        ListaEnlazada <Pixel> pixeles = new ListaEnlazada();
+        
         for (int i = 0; i < total; i++) {
-            add(new Pixel());
+            Pixel pixel = new Pixel();
+            add(pixel);
+            pixeles.add(pixel);
         }
+        interfaz.setPixeles(pixeles);
     }
 
+    public Interfaz getInterfaz() {
+        return interfaz;
+    }
+
+    public void setInterfaz(Interfaz interfaz) {
+        this.interfaz = interfaz;
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
